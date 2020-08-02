@@ -22,10 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // All API
-Route::group(['middleware' => 'api', 'namespace' => 'Api'], function () {
+Route::group(['middleware' => ['api', 'checkPassword', 'changeLanguage'], 'namespace' => 'Api'], function () {
 
     Route::post('get-main-categories', 'CategoriesController@index');
 
+    Route::post('get-category-byId', 'CategoriesController@getCategoryById');
 });
 
 
