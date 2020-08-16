@@ -27,6 +27,9 @@ Route::group(['middleware' => ['api', 'checkPassword', 'changeLanguage'], 'names
     Route::post('get-main-categories', 'CategoriesController@index');
 
     Route::post('get-category-byId', 'CategoriesController@getCategoryById');
+
+    Route::post('change-category-status', 'CategoriesController@changeStatus');
+
 });
 
 

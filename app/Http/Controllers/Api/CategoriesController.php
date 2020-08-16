@@ -16,8 +16,12 @@ class CategoriesController extends Controller
     public function index()
     {
 
-        $categories = Category::select('id', 'name_' . app()->getLocale() . ' as name')->get();
-        return response()->json($categories);
+        $categories = Category::select('id', 'name_' . app()->getLocale() . ' as name', 'active')->get();
+
+
+        return $this->returnData('categories', $categories);
+
+        //return response()->json($categories);
 
     }
 
@@ -34,6 +38,19 @@ class CategoriesController extends Controller
         } else {
             return $this->returnData('category', $category,'Successfully');
         }
+
+
+
+
+    }
+
+    public function changeStatus(Request $request) {
+
+        // validation
+
+        Category::where('id' ,$request->id)->update(['active' => $request->active]);
+
+        return $this->returnSuccessMessage('Update successfully');
 
 
 
