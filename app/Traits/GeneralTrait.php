@@ -15,7 +15,6 @@ trait GeneralTrait {
             'status' => false,
             'errNum' => $errNum,
             'msg' => $msg
-
         ]);
     }
 
